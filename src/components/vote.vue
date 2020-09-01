@@ -3,7 +3,9 @@
       <button v-for="(emoticon, index) in emoticons" 
               :key="index"
               :id="emoticon"
+              :value="emoticon"
               class="btn-emoticons"
+              @click="vote"
       ></button> <!-- For loop pada vue js-->
     </div>
   </template>
@@ -18,6 +20,13 @@
     data: function(){
         return {
             emoticons: ['very-bad', 'bad', 'ok', 'good', 'very-good']
+        }
+    },
+    methods:{
+        vote(e){
+            var voted = e.target.value;
+            
+            localStorage.setItem('vote', voted);
         }
     }
   };

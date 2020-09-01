@@ -34,6 +34,10 @@ export default {
     align-items: center;
   }
 
+  .give-your-vote{
+    font-size: 21px;
+  }
+
   section{
     width: 100%;
   }
@@ -41,5 +45,10 @@ export default {
   .emoticons{
     display: flex;
     justify-content: center;
+  }
+
+  .finish{
+    position: absolute;
+    bottom: 20px;
   }
 </style>
