@@ -6,7 +6,7 @@
       </h3>
 
       <div class="emoticons">
-        //Ini akan menjadi component vote
+        <vote/>
       </div>
     </section>
 
@@ -18,11 +18,11 @@
 
 <script>
 // @ is an alias to /src
-// import HelloWorld from "@/components/HelloWorld.vue";
+import vote from "@/components/vote.vue";
 
 export default {
   name: "Home",
-  components: { }
+  components: { vote }
 };
 </script>
 
@@ -36,5 +36,10 @@ export default {
 
   section{
     width: 100%;
+  }
+
+  .emoticons{
+    display: flex;
+    justify-content: center;
   }
 </style>
