@@ -28,9 +28,19 @@
             var voted = e.target.value;
 
             var tgl = moment().format('YYYY-MM-DD h:mm:ss');
-            console.log(tgl);
 
-            localStorage.setItem('vote', voted);
+            var data = {
+                vote: voted,
+                create_at: tgl
+            }
+
+            console.log(data);
+
+            var jsonToString = JSON.stringify(data);
+
+            console.log(jsonToString);
+
+            localStorage.setItem('vote', jsonToString);
         }
     }
   };
