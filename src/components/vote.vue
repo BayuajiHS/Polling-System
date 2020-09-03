@@ -13,7 +13,8 @@
   <script>
   // @ is an alias to /src
   // import HelloWorld from "@/components/HelloWorld.vue";
-  
+  import moment from "moment";
+
   export default {
     name: "Home",
     components: { },
@@ -25,7 +26,10 @@
     methods:{
         vote(e){
             var voted = e.target.value;
-            
+
+            var tgl = moment().format('YYYY-MM-DD h:mm:ss');
+            console.log(tgl);
+
             localStorage.setItem('vote', voted);
         }
     }
