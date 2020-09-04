@@ -5,6 +5,7 @@
               :id="emoticon"
               :value="emoticon"
               class="btn-emoticons"
+              :disabled="isDisable"
               @click="vote"
       ></button> <!-- For loop pada vue js-->
     </div>
@@ -16,17 +17,20 @@
   import moment from "moment";
 
   export default {
-    name: "Home",
+    name: "vote",
     components: { },
     data: function(){
         return {
-            emoticons: ['very-bad', 'bad', 'ok', 'good', 'very-good']
+            emoticons: ['very-bad', 'bad', 'ok', 'good', 'very-good'],
+            isDisable: false
         }
     },
     methods:{
         vote(e){
+            this.isDisable = true;
             var voted = e.target.value;
 
+            var keyStorage = moment().format('YYYYMMDDhhmmss');
             var tgl = moment().format('YYYY-MM-DD h:mm:ss');
 
             var data = {
@@ -40,7 +44,7 @@
 
             console.log(jsonToString);
 
-            localStorage.setItem('vote', jsonToString);
+            localStorage.setItem(keyStorage, jsonToString);
         }
     }
   };
