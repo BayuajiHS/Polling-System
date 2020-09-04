@@ -22,7 +22,11 @@
 
   export default {
     name: "vote",
-    components: { },
+    props: {
+        voteProp: {
+            type : Function
+        }
+    },
     data: function(){
         return {
             emoticons: ['very-bad', 'bad', 'ok', 'good', 'very-good'],
@@ -50,6 +54,8 @@
             console.log(jsonToString);
 
             localStorage.setItem(keyStorage, jsonToString);
+
+            this.voteProp();
         }
     },
     computed:{
