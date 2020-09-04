@@ -1,3 +1,6 @@
+<!--CATATAN
+:class="{active: emoticon == emoticonClick}" artinya jika nilai emoticon hasil looping tersebut memiliki nilai emoticon yang sedang di klik maka emoticon yg di klik tersebut memiliki class active
+-->
 <template>
     <div class="buttons">
       <button v-for="(emoticon, index) in emoticons" 
@@ -5,6 +8,7 @@
               :id="emoticon"
               :value="emoticon"
               class="btn-emoticons"
+              :class="{active: emoticon == emoticonClick}" 
               :disabled="isDisable"
               @click="vote"
       ></button> <!-- For loop pada vue js-->
@@ -22,13 +26,16 @@
     data: function(){
         return {
             emoticons: ['very-bad', 'bad', 'ok', 'good', 'very-good'],
-            isDisable: false
+            isDisable: false,
+            emoticonClick : false
         }
     },
     methods:{
         vote(e){
-            this.isDisable = true;
             var voted = e.target.value;
+            
+            this.isDisable = true;
+            this.emoticonClick = voted;
 
             var keyStorage = moment().format('YYYYMMDDhhmmss');
             var tgl = moment().format('YYYY-MM-DD h:mm:ss');
@@ -71,6 +78,7 @@
     #very-bad:hover{
         background-position: 0px -100px;
     }
+    #very-bad.active,
     #very-bad:active{
         background-position: 0px -200px;
     }
@@ -81,6 +89,7 @@
     #bad:hover{
         background-position: -101px -100px;
     }
+    #bad.active,
     #bad:active{
         background-position: -101px -200px;
     }
@@ -91,6 +100,7 @@
     #ok:hover{
         background-position: -202px -100px;
     }
+    #ok.active,
     #ok:active{
         background-position: -202px -200px;
     }
@@ -101,16 +111,7 @@
     #good:hover{
         background-position: -303px -100px;
     }
-    #good:active{
-        background-position: -303px -200px;
-    }
-
-    #good{
-        background-position: -303px 0px;
-    }
-    #good:hover{
-        background-position: -303px -100px;
-    }
+    #good.active,
     #good:active{
         background-position: -303px -200px;
     }
@@ -121,6 +122,7 @@
     #very-good:hover{
         background-position: -404px -100px;
     }
+    #very-good.active,
     #very-good:active{
         background-position: -404px -200px;
     }
