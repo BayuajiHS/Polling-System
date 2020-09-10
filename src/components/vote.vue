@@ -36,9 +36,16 @@
     methods:{
         vote(e){
             var voted = e.target.value;
-
+            //untuk menentukan button dengan class active
             this.emoticonClick = voted;
 
+            //melakukan penyimpanan data
+            this.store(voted);
+
+            //memberikan indikator ke home components untuk menampilkan terima kasih
+            this.voteProp();
+        },
+        store(voted){
             var keyStorage = moment().format('YYYYMMDDhhmmss');
             var tgl = moment().format('YYYY-MM-DD h:mm:ss');
 
@@ -54,8 +61,6 @@
             console.log(jsonToString);
 
             localStorage.setItem(keyStorage, jsonToString);
-
-            this.voteProp();
         }
     },
     computed:{
