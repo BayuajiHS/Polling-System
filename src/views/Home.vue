@@ -36,6 +36,8 @@ export default {
     },
     resetVote(){
       this.show = false;
+
+      this.$root.$emit('emitProcessDone')
     }
   }
 };
